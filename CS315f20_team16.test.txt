@@ -1,0 +1,541 @@
+
+start
+	function integer tossACoin(integer user ){
+		integer coin;
+		rand(coin);
+		integer win;
+		if(user == coin){
+			win = 1;
+		}else{
+		win = 0;
+		}
+		return win;
+	}
+
+	gamemap(1);
+    createAvatar( "Sherlock" );
+	integer i = 0;
+	integer bound = 5;
+	loop(i<bound){
+		addroom(1);
+		createmonster( 1 );
+		i += 1;
+	}
+	integer health = 100;
+	integer mentality = 10;
+
+~Room1
+	zemout( "Welcome Room 1" );
+	integer jumpCount = 0;
+	rand(actualJumpCount);
+	string answer = "";
+	integer a = 0;
+	bound = 5;
+	loop( a < bound ){
+		zemout( "do you want to jump? (type yes or no)" );
+		answer = zemin();
+		string approve = "yes";
+		if( answer == approve ){
+			jump(forward);
+			jumpCount += 1;
+		}else{
+			zemout("You did not jump");
+		}
+		a++;
+	}
+	if( jumpCount == actualJumpCount){
+		mentality += 30;
+		zemout( "You won (+30 mentality)" );
+	}else{
+		zemout("You lose 10 mentality point");
+		mentality -= 10;
+	}
+~Room2
+	zemout( "Welcome Room 2" );
+	string answer = "";
+	string computerAnswer;
+	integer userScore = 0;
+	integer monsterScore = 0;
+	integer result;
+	integer limit =2;
+	doloop{
+		zemout( "toss a coin if you want head type 1, tail 0 (type your answer): " );
+		answer  = zemin();
+		result = tossACoin(answer);
+		integer check1 =1;
+		if(result == check1){
+			zemout("You won this round");
+			}else{
+				zemout("You lose this round!!!");
+			}
+		
+	}loop( userScore <= limit  );
+	integer scoreCheck=3;
+	if( userScore == scoreCheck ){
+		mentality += 30;
+		zemout( "You won (+30 mentality)" );
+	}else{
+		health -= 20;
+		zemout( "You lost (-20 health)");
+	}
+~Room3
+	zemout( "Welcome Room 3" );
+	integer jumpCount = 0;
+	rand(actualJumpCount);
+	string answer = "";
+	integer a = 0;
+	bound = 5;
+	loop( a < bound ){
+		zemout( "do you want to jump? (type yes or no)" );
+		answer = zemin();
+		string approve = "yes";
+		if( answer == approve ){
+			jump(forward);
+			jumpCount += 1;
+		}else{
+			zemout("You did not jump");
+		}
+		a++;
+	}
+	if( jumpCount == actualJumpCount){
+		mentality += 30;
+		zemout( "You won (+30 mentality)" );
+	}else{
+		zemout("You lose 10 mentality point");
+		mentality -= 10;
+	}
+	
+~Room4
+	zemout( "Welcome Room 4" );
+	string answer = "";
+	string computerAnswer;
+	integer userScore = 0;
+	integer monsterScore = 0;
+	integer result;
+	integer limit =2;
+	doloop{
+		zemout( "toss a coin if you want head type 1, tail 0 (type your answer): " );
+		answer  = zemin();
+		result = tossACoin(answer);
+		integer check1 =1;
+		if(result == check1){
+			zemout("You won this round");
+			}else{
+				zemout("You lose this round!!!");
+			}
+		
+	}loop( userScore <= limit  );
+	integer scoreCheck=3;
+	if( userScore == scoreCheck ){
+		mentality += 30;
+		zemout( "You won (+30 mentality)" );
+	}else{
+		health -= 20;
+		zemout( "You lost (-20 health)");
+	}
+~Room5
+	zemout( "Welcome Room 5" );
+	integer jumpCount = 0;
+	rand(actualJumpCount);
+	string answer = "";
+	integer a = 0;
+	bound = 5;
+	loop( a < bound ){
+		zemout( "do you want to jump? (type yes or no)" );
+		answer = zemin();
+		string approve = "yes";
+		if( answer == approve ){
+			jump(forward);
+			jumpCount += 1;
+		}else{
+			zemout("You did not jump");
+		}
+		a++;
+	}
+	if( jumpCount == actualJumpCount){
+		mentality += 30;
+		zemout( "You won (+30 mentality)" );
+	}else{
+		zemout("You lose 10 mentality point");
+		mentality -= 10;
+	}
+~End of the Game!!!
+	integer totalMentality = 100;
+	if( mentality >= totalMentality ){
+		zemout( "You won the game");
+		zemout( "SHERLOCKED" );
+	}else{
+		zemout( "GAME OVER" );
+	}
+	
+	function directions movedirectquick(integer directAnswer){
+		directions direction;
+		integer select1 = 1;
+		integer select2 = 2;
+		integer select3 = 3;
+		integer select4 = 4;
+		if(directAnswer == select1)
+		{
+		       	 direction = NORTH;
+		}elif(directionAnswer == select2)
+		{
+			direction = WEST;
+		}else {if(directionAnswer == select3)
+		{
+			direction = EAST;
+		}elif(directionAnswer == select4)
+		{
+			direction = NORTH;
+		}else{
+			zemout("You did wrong choice");
+		}
+		}
+		movedirect(direction);
+		return direction;
+}
+
+	gamemap(5);
+	
+	string treasure[5];
+	treasure[0] = "gold";
+	treasure[1] = "sword";
+	treasure[2] = "emerald";
+	treasure[3] = "jewelry";
+	treasure[4] = "shield";
+ 	
+	string tool[4];
+	tool[0] = "gun";
+	tool[1] = "shotgun";
+	tool[2] = "axe";
+	tool[3] = "hook";
+	
+	integer wealth = 1000;
+	integer strength = 100;
+	integer i = 0;
+
+	integer roomNumber = 5;
+	loop( i < roomNumber)
+	{
+		addroom( treasure, tool);  
+		createmonster(i);
+		i += 1;	
+	}	
+	
+	creteavatar(1);
+	boolean continuous = true;
+~ room 1
+	string input;
+	zemout("If you want to quit press 0:");
+	input = zemin();
+	integer zero = 0;
+	loop( input != zero    )
+	{
+		zemout("There is magnificent amount of gold. There is also a beginner level monster!!!");
+		zemout("Your wealth: ");
+		zemout(wealth);
+		zemout(" Your strength ");
+		zemout(strength);
+		zemout("Give a command: 1 to move direct, 2 to jump, 3 to fight, 4 to eat, 5 to buy, 6 to open door, 7 pickupwealth");
+		integer command;
+		command	= zemin();
+		integer selection1 = 1;
+		integer selection2 = 2;
+		integer selection3 = 3;
+		integer selection4 = 4;
+		integer selection5 = 5;
+		integer selection6 = 6;
+		integer selection7 = 7;
+		if(command == selection1){
+			zemout("Press 1 for north, 2 for west, 3 for east, 4 for south");
+			integer directAnswer;
+			directAnswer = zemin();
+			movedirectly(directAnswer);
+		}elif(command == selection2)
+		{
+			jump(forward);	
+		}else{if(command == selection3)
+		{
+			fight(tool);
+		}
+		elif(command == selection4)
+		{
+			eat(food);
+		}else{
+		if(command == selection5)
+		{
+			buy(meal);
+		}
+		elif(command == selection6)
+		{
+				opendoor(1);
+		}
+		else{if(command == selection7)
+		{
+			pickupwlt(3);
+		}elif(command == selection7)
+		{
+		zemout("If you want to quit press 0:");
+		input = zemin();
+		}else
+		{
+			zemout("You left the room");
+		}
+		}
+		}
+		}
+	}	
+~ room 2
+	string input;
+	zemout("If you want to quit press 0:");
+	input = zemin();
+	integer zero = 0;
+	loop( input != zero    )
+	{
+		zemout("There is magnificent amount of gold. There is also a two beginner leve monster!!!");
+		zemout("Your wealth: ");
+		zemout(wealth);
+		zemout(" Your strength ");
+		zemout(strength);
+		zemout("Give a command: 1 to move direct, 2 to jump, 3 to fight, 4 to eat, 5 to buy, 6 to open door, 7 pickupwealth");
+		integer command;
+		command	= zemin();
+		integer selection1 = 1;
+		integer selection2 = 2;
+		integer selection3 = 3;
+		integer selection4 = 4;
+		integer selection5 = 5;
+		integer selection6 = 6;
+		integer selection7 = 7;
+		if(command == selection1){
+			zemout("Press 1 for north, 2 for west, 3 for east, 4 for south");
+			integer directAnswer;
+			directAnswer = zemin();
+			movedirectly(directAnswer);
+		}elif(command == selection2)
+		{
+			jump(forward);	
+		}else{if(command == selection3)
+		{
+			fight(tool);
+		}
+		elif(command == selection4)
+		{
+			eat(food);
+		}else{
+		if(command == selection5)
+		{
+			buy(meal);
+		}
+		elif(command == selection6)
+		{
+				opendoor(1);
+		}
+		else{if(command == selection7)
+		{
+			pickupwlt(3);
+		}elif(command == selection7)
+		{
+		zemout("If you want to quit press 0:");
+		input = zemin();
+		}else
+		{
+			zemout("You left the room");
+		}
+		}
+		}
+		}
+	}	
+~ room 3
+	string input;
+	zemout("If you want to quit press 0:");
+	input = zemin();
+	integer zero = 0;
+	loop( input != zero    )
+	{
+		zemout("There is magnificent amount of silver  and maze. There is also a ywo intermediate level monster!!!");
+		zemout("Your wealth: ");
+		zemout(wealth);
+		zemout(" Your strength ");
+		zemout(strength);
+		zemout("Give a command: 1 to move direct, 2 to jump, 3 to fight, 4 to eat, 5 to buy, 6 to open door, 7 pickupwealth");
+		integer command;
+		command	= zemin();
+		integer selection1 = 1;
+		integer selection2 = 2;
+		integer selection3 = 3;
+		integer selection4 = 4;
+		integer selection5 = 5;
+		integer selection6 = 6;
+		integer selection7 = 7;
+		if(command == selection1){
+			zemout("Press 1 for north, 2 for west, 3 for east, 4 for south");
+			integer directAnswer;
+			directAnswer = zemin();
+			movedirectly(directAnswer);
+		}elif(command == selection2)
+		{
+			jump(forward);	
+		}else{if(command == selection3)
+		{
+			fight(tool);
+		}
+		elif(command == selection4)
+		{
+			eat(food);
+		}else{
+		if(command == selection5)
+		{
+			buy(meal);
+		}
+		elif(command == selection6)
+		{
+				opendoor(1);
+		}
+		else{if(command == selection7)
+		{
+			pickupwlt(3);
+		}elif(command == selection7)
+		{
+		zemout("If you want to quit press 0:");
+		input = zemin();
+		}else
+		{
+			zemout("You left the room");
+		}
+		}
+		}
+		}
+	}	
+~ room 4
+	string input;
+	zemout("If you want to quit press 0:");
+	input = zemin();
+	integer zero = 0;
+	loop( input != zero    )
+	{
+		zemout("There is magnificent amount of jewelry in this room you will regret your life.!!!");
+		zemout("Your wealth: ");
+		zemout(wealth);
+		zemout(" Your strength ");
+		zemout(strength);
+		zemout("Give a command: 1 to move direct, 2 to jump, 3 to fight, 4 to eat, 5 to buy, 6 to open door, 7 pickupwealth");
+		integer command;
+		command	= zemin();
+		integer selection1 = 1;
+		integer selection2 = 2;
+		integer selection3 = 3;
+		integer selection4 = 4;
+		integer selection5 = 5;
+		integer selection6 = 6;
+		integer selection7 = 7;
+		if(command == selection1){
+			zemout("Press 1 for north, 2 for west, 3 for east, 4 for south");
+			integer directAnswer;
+			directAnswer = zemin();
+			movedirectly(directAnswer);
+		}elif(command == selection2)
+		{
+			jump(forward);	
+		}else{if(command == selection3)
+		{
+			fight(tool);
+		}
+		elif(command == selection4)
+		{
+			eat(food);
+		}else{
+		if(command == selection5)
+		{
+			buy(meal);
+		}
+		elif(command == selection6)
+		{
+				opendoor(1);
+		}
+		else{if(command == selection7)
+		{
+			pickupwlt(3);
+		}elif(command == selection7)
+		{
+		zemout("If you want to quit press 0:");
+		input = zemin();
+		}else
+		{
+			zemout("You left the room");
+		}
+		}
+		}
+		}
+	}	
+~ room 5
+		string input;
+	zemout("If you want to quit press 0:");
+	input = zemin();
+	integer zero = 0;
+	loop( input != zero    )
+	{
+		zemout("There is magnificent pure magnificent jewelries. There is also a beginner level monster!!!");
+		zemout("Your wealth: ");
+		zemout(wealth);
+		zemout(" Your strength ");
+		zemout(strength);
+		zemout("Give a command: 1 to move direct, 2 to jump, 3 to fight, 4 to eat, 5 to buy, 6 to open door, 7 pickupwealth");
+		integer command;
+		command	= zemin();
+		integer selection1 = 1;
+		integer selection2 = 2;
+		integer selection3 = 3;
+		integer selection4 = 4;
+		integer selection5 = 5;
+		integer selection6 = 6;
+		integer selection7 = 7;
+		if(command == selection1){
+			zemout("Press 1 for north, 2 for west, 3 for east, 4 for south");
+			integer directAnswer;
+			directAnswer = zemin();
+			movedirectly(directAnswer);
+		}elif(command == selection2)
+		{
+			jump(forward);	
+		}else{if(command == selection3)
+		{
+			fight(tool);
+		}
+		elif(command == selection4)
+		{
+			eat(food);
+		}else{
+		if(command == selection5)
+		{
+			buy(meal);
+		}
+		elif(command == selection6)
+		{
+				opendoor(1);
+		}
+		else{if(command == selection7)
+		{
+			pickupwlt(3);
+		}elif(command == selection7)
+		{
+		zemout("If you want to quit press 0:");
+		input = zemin();
+		}else
+		{
+			zemout("You left the room");
+		}
+		}
+		}
+		}
+	}	
+	zemout("You finish the game with: ");
+	integer multipll = 2;
+	integer multipp = 3;
+	integer finalpoint1;
+	finalpoint1 = multipll * wealth;
+	integer finalpoint2;
+	finalpoint2 = multipp * strength;
+	integer finalpoint;
+	finalpoint = finalpoint1 + finalpoint2;
+	zemout(finalpoint);
+end

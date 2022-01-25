@@ -1,0 +1,61 @@
+start 
+function string rockpaper(integer b, string ccc){
+  a += b;
+  zemout("fdas");
+  return a;
+}
+~ comment
+if(x == y){
+  zemin();
+  zemout("ddasf");
+  aog + biii;
+  2 + a;
+  a++;
+  a + 3 * 7 / ( 8 + 3);
+  b--;
+  2 + 3;
+  loop(al < bal){
+    zemin();
+    2 + 3;
+    abbb++;
+  }
+  
+ }else{
+  zemout("egg");
+  zemin();
+ }
+
+forloop(blitz < morde; morde++){
+  zemin();
+  zemout("dfas");
+  a++;
+  doloop{
+    zemin();
+    2 + 3 * 5;
+  }loop(b == c);
+  integer a = 5;
+  a = 20;
+  integer b;
+  b = 7;
+  a += 7;
+  a -= 6;
+  b *= 10;
+  d /= 20;
+  integer aoo[5];
+  aoo[1] = 10;
+  aoo[3] = 10;
+  integer a;
+  a = aoo[10];
+  b = aoo[3];
+  rockpaper(a);
+  integer c;
+  c = rockpaper(a, cccc);
+  rand(4, 5);
+  createavatar(m, cl, 5);
+  a = b + c;
+  a = 2+ 3+ c;
+}
+
+zemin();
+zemout("lblbl");
+end
